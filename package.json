@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint && vue-cli-service lint shipitfile.js"
   },
   "dependencies": {
     "animejs": "^3.0.1",
@@ -20,11 +20,14 @@
     "@vue/cli-service": "^3.9.0",
     "@vue/eslint-config-airbnb": "^4.0.0",
     "babel-eslint": "^10.0.1",
+    "commander": "^2.20.0",
+    "consola": "^2.9.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "lint-staged": "^8.1.5",
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
+    "shipit-deploy": "^4.1.4",
     "vue-template-compiler": "^2.6.10"
   },
   "gitHooks": {
