@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { value, onCreated } from 'vue-function-api';
+import { value, onCreated, onBeforeDestroy } from 'vue-function-api';
 import anime from 'animejs';
 import http from './http';
 import Artwork from './components/Artwork.vue';
@@ -25,23 +25,52 @@ export default {
   },
   setup() {
     // Artworks feching logic
+    const latestArtwork = value(null);
     const currentArtwork = value(null);
+    const currentOffset = value(0);
+    const lastUpdate = value(null);
+    const pollInterval = Number(process.env.VUE_APP_POLL_INTERVAL);
+    const artworkExpireDuration = Number(
+      process.env.VUE_APP_EXPIRE_ARTWORK_DURATION,
+    );
     const poll = async () => {
-      const { data } = await http({
-        method: 'GET',
-        url: '/artworks/',
-        params: {
-          limit: 1,
-          offset: 0,
-        },
-      });
-      const [latestArtwork] = data.results;
-      if (!currentArtwork || latestArtwork.id !== currentArtwork.id) {
-        currentArtwork.value = latestArtwork;
+      const currentArtworkHasExpired = lastUpdate.value
+        && Date.now() - lastUpdate.value >= artworkExpireDuration;
+      const fetch = async (offset = 0) => {
+        const { data } = await http({
+          method: 'GET',
+          url: '/artworks/',
+          params: {
+            limit: 1,
+            offset,
+          },
+        });
+        const [artwork] = data.results;
+        return artwork;
+      };
+      let artwork = await fetch();
+
+      if (!latestArtwork.value || artwork.id !== latestArtwork.value.id) {
+        latestArtwork.value = artwork;
+        currentArtwork.value = artwork;
+        currentOffset.value = 0;
+        lastUpdate.value = Date.now();
+      } else if (currentArtworkHasExpired) {
+        currentOffset.value += 1;
+        artwork = await fetch(currentOffset.value);
+        if (artwork) {
+          currentArtwork.value = artwork;
+        } else {
+          currentOffset.value = 0;
+        }
+        lastUpdate.value = Date.now();
       }
-      setTimeout(poll, 3000);
+      window.fetchArtworkTimeout = setTimeout(poll, pollInterval);
     };
     onCreated(poll);
+    onBeforeDestroy(() => {
+      clearTimeout(window.fetchArtworkTimeout);
+    });
     // Artwork in/out animations
     const beforeArtworkEnter = (el) => {
       el.style.opacity = 0;
@@ -86,6 +115,7 @@ html,
   height: 100%;
   padding: 0;
   margin: 0;
+  overflow: hidden;
 }
 #app {
   display: flex;
