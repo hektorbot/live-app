@@ -28,15 +28,16 @@ module.exports = (shipit) => {
       servers: DEPLOY_HOST,
     },
     prod: {
-      deployTo: path.join(DEPLOY_PATH, 'production'),
+      deployTo: DEPLOY_PATH,
     },
   });
 
   shipit.on('updated', () => {
     shipit.remote(`
       cd ${shipit.releasePath};
-      ${['.env'].map(file => `ln -s ${path.join(shipit.config.deployTo, file)}`).join(';')}
-      sudo systemctl restart nginx;
+      ${['.env', 'node_modules'].map(file => `ln -s ${path.join(shipit.config.deployTo, file)}`).join(';')}
+      yarn install;
+      yarn build;
       `);
   });
 };
