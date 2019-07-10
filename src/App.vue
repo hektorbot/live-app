@@ -29,9 +29,10 @@ export default {
     const currentArtwork = value(null);
     const currentOffset = value(0);
     const lastUpdate = value(null);
-    const pollInterval = Number(process.env.VUE_APP_POLL_INTERVAL);
-    const artworkExpireDuration = Number(
+    const pollInterval = parseInt(process.env.VUE_APP_POLL_INTERVAL, 10);
+    const artworkExpireDuration = parseInt(
       process.env.VUE_APP_EXPIRE_ARTWORK_DURATION,
+      10,
     );
     const poll = async () => {
       const currentArtworkHasExpired = lastUpdate.value
