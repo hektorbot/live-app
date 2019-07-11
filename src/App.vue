@@ -106,8 +106,11 @@ export default {
     };
     // Events handlers
     const onArtworkClicked = () => {
-      if (ctx.root.$el.requestFullscreen) {
+      const { $el } = ctx.root;
+      if ($el.requestFullscreen) {
         ctx.root.$el.requestFullscreen();
+      } else if ($el.webkitRequestFullscreen) {
+        $el.webkitRequestFullscreen();
       }
     };
     return {
