@@ -7,7 +7,12 @@
       @enter="onArtworkEnter"
       @leave="onArtworkLeave"
     >
-      <Artwork v-if="currentArtwork" :key="currentArtwork.id" :imageUrl="currentArtwork.full" />
+      <Artwork
+        v-if="currentArtwork"
+        :key="currentArtwork.id"
+        :imageUrl="currentArtwork.full"
+        @click="onArtworkClicked"
+      />
     </transition>
   </div>
 </template>
@@ -23,7 +28,7 @@ export default {
   components: {
     Artwork,
   },
-  setup() {
+  setup(props, ctx) {
     // Artworks feching logic
     const latestArtwork = value(null);
     const currentArtwork = value(null);
@@ -99,11 +104,18 @@ export default {
         complete,
       });
     };
+    // Events handlers
+    const onArtworkClicked = () => {
+      if (ctx.root.$el.requestFullscreen) {
+        ctx.root.$el.requestFullscreen();
+      }
+    };
     return {
       currentArtwork,
       beforeArtworkEnter,
       onArtworkEnter,
       onArtworkLeave,
+      onArtworkClicked,
     };
   },
 };

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img :src="imageUrl" />
+    <img :src="imageUrl" v-on="$listeners" />
   </div>
 </template>
 
