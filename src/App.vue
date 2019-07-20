@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <transition
-      mode="out-in"
       :css="false"
       @beforeEnter="beforeArtworkEnter"
       @enter="onArtworkEnter"
@@ -88,8 +87,7 @@ export default {
       anime({
         targets: el,
         opacity: [0, 1],
-        scale: [0, 1],
-        duration: 400,
+        duration: 600,
         easing: 'easeInOutQuad',
         complete,
       });
@@ -97,9 +95,8 @@ export default {
     const onArtworkLeave = async (el, complete) => {
       anime({
         targets: el,
-        scale: 0,
-        opacity: 0,
-        duration: 400,
+        opacity: [1, 0],
+        duration: 600,
         easing: 'easeInOutQuad',
         complete,
       });
