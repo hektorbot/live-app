@@ -17,7 +17,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.2",
     "@vue/cli-plugin-eslint": "^3.9.2",
-    "@vue/cli-service": "^3.9.2",
+    "@vue/cli-service": "^3.9.3",
     "@vue/eslint-config-airbnb": "^4.0.1",
     "babel-eslint": "^10.0.1",
     "commander": "^2.20.0",
@@ -25,9 +25,9 @@
     "eslint": "^6.0.1",
     "eslint-plugin-vue": "^5.0.0",
     "lint-staged": "^9.2.0",
-    "sass": "^1.18.0",
+    "sass": "^1.22.7",
     "sass-loader": "^7.1.0",
-    "shipit-deploy": "^4.1.4",
+    "shipit-deploy": "^5.0.0",
     "vue-template-compiler": "^2.6.10"
   },
   "gitHooks": {
