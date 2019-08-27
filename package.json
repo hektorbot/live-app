@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint && vue-cli-service lint shipitfile.js"
+    "lint": "vue-cli-service lint && vue-cli-service lint shipitfile.js",
+    "deploy": "shipit prod deploy"
   },
   "dependencies": {
     "animejs": "^3.0.1",
