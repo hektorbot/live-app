@@ -25,7 +25,7 @@
     "consola": "2.10.1",
     "eslint": "6.2.2",
     "eslint-plugin-vue": "5.2.3",
-    "lint-staged": "9.2.5",
+    "lint-staged": "10.5.4",
     "sass": "1.22.10",
     "sass-loader": "7.3.1",
     "shipit-deploy": "5.0.0",
