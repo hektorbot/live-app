@@ -9,27 +9,27 @@
     "deploy": "shipit prod deploy"
   },
   "dependencies": {
-    "animejs": "3.1.0",
+    "animejs": "3.2.2",
     "axios": "0.19.0",
-    "core-js": "3.2.1",
-    "vue": "2.6.10",
+    "core-js": "3.38.1",
+    "vue": "2.7.16",
     "vue-function-api": "2.2.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "3.11.0",
-    "@vue/cli-plugin-eslint": "3.11.0",
-    "@vue/cli-service": "3.11.0",
+    "@vue/cli-plugin-babel": "3.12.1",
+    "@vue/cli-plugin-eslint": "3.12.1",
+    "@vue/cli-service": "3.12.1",
     "@vue/eslint-config-airbnb": "4.0.1",
-    "babel-eslint": "10.0.3",
-    "commander": "3.0.0",
-    "consola": "2.10.1",
-    "eslint": "6.2.2",
+    "babel-eslint": "10.1.0",
+    "commander": "3.0.2",
+    "consola": "2.15.3",
+    "eslint": "6.8.0",
     "eslint-plugin-vue": "5.2.3",
-    "lint-staged": "9.2.5",
-    "sass": "1.22.10",
+    "lint-staged": "9.5.0",
+    "sass": "1.80.3",
     "sass-loader": "7.3.1",
-    "shipit-deploy": "5.0.0",
-    "vue-template-compiler": "2.6.10"
+    "shipit-deploy": "5.3.0",
+    "vue-template-compiler": "2.7.16"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
