@@ -19,7 +19,7 @@
     "@vue/cli-plugin-babel": "3.11.0",
     "@vue/cli-plugin-eslint": "3.11.0",
     "@vue/cli-service": "3.11.0",
-    "@vue/eslint-config-airbnb": "4.0.1",
+    "@vue/eslint-config-airbnb": "8.0.0",
     "babel-eslint": "10.0.3",
     "commander": "3.0.0",
     "consola": "2.10.1",
